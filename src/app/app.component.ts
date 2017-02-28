@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-let $ = jQuery;  //定义jquery
+  //定义jquery
 
 export class Hero {
 	constructor(public id: number,public name: string){

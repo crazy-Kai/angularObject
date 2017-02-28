@@ -1,4 +1,8 @@
+/*引入jquery*/
+var $ = require('jquery');
+
 import { Component } from '@angular/core';
+
 
 class Hero{
 	constructor(public id : number,public name: string){
@@ -43,8 +47,8 @@ export class AppComponent { heroes = [
    new Hero(1,"wukai"),new Hero(2,"wuxiaowen"),
    new Hero(3,"guorong"),new Hero(4,"guoming")
 ] ;
-  selectedHero = null;
-  onClick(hero){
+  selectedHero : Hero;
+  onClick(hero : Hero): void{
      this.selectedHero = hero;
 
   }
