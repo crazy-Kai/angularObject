@@ -7,7 +7,15 @@ import { Heros } from './markHeros';
 @Injectable()
 
 export class HeroService{
-	getHeros() :Promise<Hero[]>{
+
+	getHeros() :Promise<Hero[]> {
 		return Promise.resolve(Heros)
 	}
+//延迟加载数据
+	slowGetHeros() :Promise<Hero[]> {
+		return new Promise(resolve => {
+			 setTimeout(() => resolve(this.getHeros()), 2000);
+		})
+	}
+	 
 }

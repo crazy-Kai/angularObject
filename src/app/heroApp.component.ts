@@ -4,7 +4,7 @@ var $ = require('jquery');
 import { Component, OnInit } from '@angular/core';
 //引入Hero这个类;
 import { Hero } from './hero';
-import {Heros} from './markHeros';
+
 import { HeroService } from './hero.service';
 
 //*ngFor 指令 循环heros数组 let hero of heros,目的:渲染出每个英雄列表
@@ -37,10 +37,11 @@ export class AppComponent { heroes :Hero[];
   selectedHero : Hero;
   //添加组件的providers元数据,并注入到AppComponent模块
   constructor( private heroService :　HeroService ){}
+
   //初始化方法
   ngOnInit(){
     //调用注入的获取数据的方法
-    this.heroService.getHeros().then( heroes =>  this.heroes = heroes );
+    this.heroService.slowGetHeros().then( heroes =>  this.heroes = heroes );
   }
   onClick(hero : Hero): void{
      this.selectedHero = hero;
