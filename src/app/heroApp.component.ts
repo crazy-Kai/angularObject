@@ -7,6 +7,8 @@ import { Hero } from './hero';
 
 import { HeroService } from './hero.service';
 
+import { HeroListComponent } from './heroList.component';
+
 //*ngFor 指令 循环heros数组 let hero of heros,目的:渲染出每个英雄列表
 //ngmodel 用于数据双向绑定,当然也可以用给表单绑定事件的方式来实现!
 //*ngIf 用于判断 是否渲染出模版 相当于原生js的if else 功能
@@ -18,16 +20,8 @@ import { HeroService } from './hero.service';
 	selector:'my-testapp',
 	template:`
 		<h2>My Heros</h2>
-		<ul class="heroes">
-          <li *ngFor = "let hero of heroes" 
-          [class.selected] = "hero === selectedHero"
-          (click) = "onClick(hero)">
-          
-              <span class="badge" >{{hero.id}}</span>
-              {{hero.name}}
-          </li>
-		</ul> 
-		<myHero-details  [hero] = "selectedHero" ></myHero-details>
+		
+	 <my-heroList [myheroes] = "heroes"></my-heroList>
 	`,
   // //用来依赖注入的供应商
   providers:[HeroService]
@@ -41,10 +35,10 @@ export class AppComponent { heroes :Hero[];
   //初始化方法
   ngOnInit(){
     //调用注入的获取数据的方法
-    this.heroService.slowGetHeros().then( heroes =>  this.heroes = heroes );
+    this.heroService.getHeros().then( heroes =>  this.heroes = heroes );
   }
-  onClick(hero : Hero): void{
-     this.selectedHero = hero;
+  // onClick(hero : Hero): void{
+  //    this.selectedHero = hero;
 
-  }
+  // }
 }
