@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input,OnInit,OnChanges} from '@angular/core';
 
 import { Hero } from './hero';
 
@@ -24,4 +24,7 @@ export class HeroDetailsComponent {
 	// @Input 在此处的作用是:声明hero是输入属性,绑定到此组件上来! hero:Hero 是typeScript 的语法 声明变量类型!
 	@Input() 
 	hero: Hero;
+  
+  
+
 }

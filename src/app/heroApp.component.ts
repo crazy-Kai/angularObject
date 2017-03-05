@@ -19,26 +19,32 @@ import { HeroListComponent } from './heroList.component';
 @Component({
 	selector:'my-testapp',
 	template:`
-		<h2>My Heros</h2>
 		
-	 <my-heroList [myheroes] = "heroes"></my-heroList>
+   <h2>My Heros </h2>	
+	 <my-heroList [myheroes] = "heroes" [selectedHero]="selectedHero" (onClicked)="onClicked($event)"></my-heroList>
+   <myHero-details [hero]="selectedHero"></myHero-details>
 	`,
   // //用来依赖注入的供应商
   providers:[HeroService]
 })
 
-export class AppComponent { heroes :Hero[];
+export class AppComponent { 
+  heroes :Hero[];
   selectedHero : Hero;
+ 
   //添加组件的providers元数据,并注入到AppComponent模块
   constructor( private heroService :　HeroService ){}
 
   //初始化方法
   ngOnInit(){
     //调用注入的获取数据的方法
-    this.heroService.getHeros().then( heroes =>  this.heroes = heroes );
+    this.heroService.getHeros().then( heroes =>  {
+      this.heroes = heroes;
+     
+    } );
   }
-  // onClick(hero : Hero): void{
-  //    this.selectedHero = hero;
+  onClicked(hero : Hero){
+     this.selectedHero = hero;
 
-  // }
+  }
 }
