@@ -17,5 +17,11 @@ export class HeroService{
 			 setTimeout(() => resolve(this.getHeros()), 2000);
 		})
 	}
+	//获取单个英雄
+	getHero(id: number): Promise<Hero> {
+  		return this.getHeros()
+             .then(heroes => heroes.find(hero => hero.id === id));
+}
+
 	 
 }
